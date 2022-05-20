@@ -20,11 +20,12 @@ class Login extends React.Component {
       nameUser,
     } = this.state;
 
-    if (nameUser.length >= '3') {
+    /* if (nameUser.length >= '3') {
       this.setState(() => ({ isLoginButtonDisabled: false }));
     } else {
       this.setState(() => ({ isLoginButtonDisabled: true }));
-    }
+    } */
+    this.setState({ isLoginButtonDisabled: nameUser.length < '3' });
   };
 
   createUserButton = async () => {
