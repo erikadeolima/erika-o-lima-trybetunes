@@ -7,7 +7,6 @@ class Search extends React.Component {
         <form>
           <button type="submit" data-testid="search-button">Pesquisar</button>
         </form>
-
       </div>
     );
   }
