@@ -32,6 +32,7 @@ class Header extends React.Component {
             <Loading />
           ) : (
             <p data-testid="header-user-name">
+              Olá,
               { nameUser.name }
             </p>
           )}
