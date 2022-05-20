@@ -1,5 +1,5 @@
 import React from 'react';
-/* import PropTypes from 'prop-types'; */
+import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Loading from '../pages/Loading';
 
@@ -35,6 +35,14 @@ class Header extends React.Component {
               { nameUser.name }
             </p>
           )}
+          <nav>
+            <Link data-testid="link-to-search" to="/search">SEARCH</Link>
+            <br />
+            <Link data-testid="link-to-favorites" to="/favorites">FAVORITES</Link>
+            <br />
+            <Link data-testid="link-to-profile" to="/profile">PROFILE</Link>
+            <br />
+          </nav>
         </header>
       </div>
     );
