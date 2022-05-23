@@ -38,6 +38,8 @@ class Search extends React.Component {
     this.setState({ isLoginButtonDisabled: artistName.length < '2' });
   };
 
+  // A func searchArtist é responsavel por consultar minha API, e me retornar todas as keys que contenham o valor da minha busca. O preventDefault evita que minha pag sofra um refresh antes da minha requisição ser finalizada. O retorno da minha requisição a searchAlbumsAPI me retorna os dados que irei usar para construir minha pag com os resultados da busca
+
   searchArtist = async (event) => {
     const { artistName } = this.state;
     event.preventDefault();
@@ -83,6 +85,7 @@ class Search extends React.Component {
           >
             Pesquisar
           </button>
+          {/* Se minha pagina estiver carregando, ou seja ainda estiver requisitando a API, exibo a pag carregando, senão exibo o resultados dos albuns para o artista, se n for encontrado nenhum album, exibo um testo, senao exibo a lista desses albuns, que são construidos com um map */}
           { isLoading ? (
             <Loading />
           ) : (

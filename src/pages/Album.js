@@ -18,6 +18,7 @@ class Album extends React.Component {
     const { match } = this.props;
     const { params } = match;
     const { id } = params;
+    /* Faz a requisição a API, porém por ser uma consulta que será carregana no corpo da pag sem um evento, fiz a construção no didMount para que a requisição aconteça somente depois da pag montada, assim não demora para o carregamento, e nem quebra quando a API n estiver disponivel */
     getMusics(id).then((response) => (
       this.setState({
         collection: response[0],
@@ -29,12 +30,14 @@ class Album extends React.Component {
           )),
       })
     ));
+    /* é resposavel por armazenar o checked da favorite songs e quando a pag carregar ela ser atualizada junto e não perdida */
     this.setState({ isLoading: true }, async () => {
       const favoritesSongs = await getFavoriteSongs();
       this.setState({ favoritesSongs, isLoading: false });
     });
   }
 
+  /* é responsavel por buscar o checked da minha musica favorita e guardar ela na  para que o checked seja carregado no music card e quando ele for usado */
   findFavorite = (track) => {
     const { favoritesSongs } = this.state;
     return !!favoritesSongs.find((song) => song.trackId === track.trackId);
