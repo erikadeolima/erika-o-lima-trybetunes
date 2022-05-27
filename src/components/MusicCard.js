@@ -16,7 +16,7 @@ class MusicCard extends React.Component {
     });
   }
 
-  favoriteSong = ({ target }) => {
+  favoriteSong = (/* { target } */) => {
     const { trackName, src, trackId, image } = this.props;
     const track = JSON.stringify({ trackName, src, trackId, image });
     const { favorited } = this.state;
@@ -62,16 +62,12 @@ class MusicCard extends React.Component {
   }
 }
 
-/* MusicCard.propTypes = {
-  track: PropTypes.shape({
-    trackName: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-    trackId: PropTypes.number.isRequired,
-  }).isRequired,
-  trackName: PropTypes.string.isRequired,
+MusicCard.propTypes = {
+  image: PropTypes.string.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
   src: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
-  isFavorite: PropTypes.bool.isRequired,
-}; */
+  trackName: PropTypes.string.isRequired,
+};
 
 export default MusicCard;
