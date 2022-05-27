@@ -16,6 +16,7 @@ class Album extends React.Component {
 
   componentDidMount() {
     const { match } = this.props;
+
     const { params } = match;
     const { id } = params;
     /* Faz a requisição a API, porém por ser uma consulta que será carregana no corpo da pag sem um evento, fiz a construção no didMount para que a requisição aconteça somente depois da pag montada, assim não demora para o carregamento, e nem quebra quando a API n estiver disponivel */
@@ -40,7 +41,7 @@ class Album extends React.Component {
   /* é responsavel por buscar o checked da minha musica favorita e guardar ela na  para que o checked seja carregado no music card e quando ele for usado */
   findFavorite = (track) => {
     const { favoritesSongs } = this.state;
-    return !!favoritesSongs.find((song) => song.trackId === track.trackId);
+    return favoritesSongs.find((song) => JSON.parse(song).trackId === track.trackId);
   }
 
   render() {
@@ -78,10 +79,10 @@ class Album extends React.Component {
   }
 }
 
-Album.propTypes = {
+/* Album.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape(PropTypes.string).isRequired,
-  }).isRequired,
-};
+  }),
+}; */
 
 export default Album;

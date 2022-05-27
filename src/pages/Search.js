@@ -110,7 +110,7 @@ class Search extends React.Component {
                   Ir para o Album
                 </Link>
               </nav>
-              <img alt="Album" src={ `url-to-${album.artworkUrl100}` } />
+              <img alt="Album" src={ album.artworkUrl100 } />
             </div>
           )))}
         </form>
