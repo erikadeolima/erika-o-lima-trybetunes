@@ -12,8 +12,8 @@ class Favorites extends React.Component {
 
   componentDidMount() {
     this.setState({ isLoading: true }, async () => {
-      const favoritesSongs = (await getFavoriteSongs())
-        .map((element) => JSON.parse(element));
+      const favoritesSongs = ((await getFavoriteSongs()) || [])
+        .map((element) => element);
       this.setState({ favoritesSongs, isLoading: false });
     });
   }
@@ -42,6 +42,7 @@ class Favorites extends React.Component {
                 src={ track.src }
                 trackId={ track.trackId }
                 image={ track.image }
+                buttonTitle="Remover Favorita"
                 isFavorite={ this.findFavorite(track) }
               />
             )))}

@@ -41,7 +41,7 @@ class Album extends React.Component {
   /* é responsavel por buscar o checked da minha musica favorita e guardar ela na  para que o checked seja carregado no music card e quando ele for usado */
   findFavorite = (track) => {
     const { favoritesSongs } = this.state;
-    return favoritesSongs.find((song) => JSON.parse(song).trackId === track.trackId);
+    return (favoritesSongs || []).find((song) => song.trackId === track.trackId);
   }
 
   render() {
@@ -69,6 +69,7 @@ class Album extends React.Component {
                   src={ track.previewUrl }
                   trackId={ track.trackId }
                   image={ track.artworkUrl100 }
+                  buttonTitle="Favoritar"
                   isFavorite={ this.findFavorite(track) }
                 />
               ))}
